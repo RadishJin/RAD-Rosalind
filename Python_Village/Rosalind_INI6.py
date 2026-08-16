@@ -19,3 +19,8 @@ count = Counter(word_list)
 
 for k, v in count.items():
     print(f"{k} {v}")   
+
+# from collections import Counter : 리스트의 요소를 카운트해주는 모듈
+# Counter(리스트) : 리스트의 요소를 카운트해서 딕셔너리 형태로 반환
+# .items() : 딕셔너리의 key, value를 튜플 형태로 반환
+# for Vari1, Vari2 in dict.items(): : 딕셔너리의 key, value를 각각 변수에 할당

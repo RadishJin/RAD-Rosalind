@@ -6,3 +6,4 @@ numbers_str = clean_data.split()
 a, b = map(int, numbers_str)
 
 print(f"{a**2 + b**2}")
+
