@@ -12,3 +12,5 @@ def Offspring(n: list[int]) -> float:
     return dot_product
 
 print(f"{Offspring(nums):.1f}")
+
+# zip(리스트, 리스트) 하면 리스트 요소들끼리 튜플로 묶어서 싹 반환
