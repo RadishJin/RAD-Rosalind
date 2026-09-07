@@ -1,34 +1,44 @@
-# with open("data/rosalind_fibd.txt", "r") as f:
-#     months, lifespan = map(int, f.read().strip().split())
+# 6달 볼거고 3달이 수명이다, 성체 될 때까지가 1달,
+# 0(수명 3개월차 - 사망) 0(수명 2개월차 - 성체) 0(수명1개월차 - 갓 성체) 1(아기) 로 시작, 6달 차에 4마리가 남아야 함.
+# 1개월 차 0 0 0 1 = 1 
+# 2개월 차 0 0 1 0 = 1
+# 3개월 차 0 1 0 1 = 2
+# 4개월 차 1 0 1 1 = 2
+# 5개월 차 1 1 1 1 = 3
+# 6개월 차 2 1 1 2 = 4
 
-months, lifespan = 1,1
 
-def mortal_fibonacci(months: int, lifespan: int) -> int:
-    """
-    계산: months개월 후 살아있는 토끼 쌍의 개수
-    
-    규칙: 각 쌍은 성숙하는 데 1개월, 그 후 lifespan개월을 산다
-    따라서 나이 2 이상 lifespan+1 이하인 동안 번식
-    
-    alive[i] = alive[i-1] + alive[i-2] - alive[i-lifespan]
-    """
-    if months <= 0 or lifespan <= 0:
-        return 0
-    if months == 1:
-        return 1
-    
-    # alive[i] = i개월에 살아있는 쌍의 개수
-    alive = [0] * (months + 2)
-    alive[1] = 1
-    alive[2] = 1 if months >= 1 else 0
-    
-    # 점화식: alive[i] = alive[i-1] + alive[i-2] - alive[i-lifespan]
-    for i in range(3, months + 2):
-        alive[i] = alive[i-1] + alive[i-2]
-        # i-lifespan 시점의 쌍이 i시점에서 죽음
-        if i - lifespan > 0:
-            alive[i] -= alive[i - lifespan]
-    
-    return alive[months + 1]
+# 데이터 가져오기
+with open("data/rosalind_fibd.txt") as f:
+    raw = f.read()
 
-print(mortal_fibonacci(months, lifespan))
+
+# 임시 데이터
+# raw = """
+# 6 3
+# """
+
+
+# 데이터 전처리
+raw = raw.strip().split()
+months, lifespan = map(int, raw)
+# print(months, lifespan)
+
+
+# 나이 딕셔너리 설정 (0개월 1개월 2개월 3개월에 사망)
+age_dict = {i: 0 for i in range(lifespan)}
+# print(age_dict)
+
+# 초기 설정
+age_dict[0] = 1
+
+for month in range(2, months + 1):
+    # 1. 이번 달에 새끼를 낳을 수 있는 성체(Age 1 이상)의 총합 계산
+    new_borns = sum(age_dict[age] for age in range(1, lifespan))
+
+    for age in range(lifespan - 1, 0, -1):
+        age_dict[age] = age_dict[age - 1]
+
+    age_dict[0] = new_borns
+
+print(sum(i for i in age_dict.values()))
