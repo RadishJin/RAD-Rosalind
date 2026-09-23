@@ -1,3 +1,4 @@
+
 # with open("data/rosalind_long.txt", "rt", encoding= "utf-8") as f:
 #     raw = f.read()
 
@@ -13,15 +14,18 @@ GCCGGAATAC
 """
 
 raw_list = raw.strip().splitlines()
-seq_dict = {}
+seq_list = []
 current = ""
 for line in raw_list:
     if not line:
         continue
     if line.startswith(">"):
-        current = line[1:]
-        seq_dict[current] = ""
+        continue
     else:
-        seq_dict[current] += line
-# print(seq_dict)
+        seq_list.append(line)
+print(seq_list)
+
+
+
+        
 

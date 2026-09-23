@@ -1,0 +1,14 @@
+[workspace]
+authors = ["RadishJin <radishj24@gmail.com>"]
+channels = ["conda-forge"]
+name = "RAD-Rosalind"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.11.*"
+biopython = ">=1.88,<2"
+scipy = ">=1.17.1,<2"
+numpy = ">=2.4.6,<3"
