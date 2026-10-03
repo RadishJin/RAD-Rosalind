@@ -1,3 +1,6 @@
+#모듈화완료
+
+
 from collections import Counter
 
 with open("data/rosalind_dna.txt", "r") as f:
