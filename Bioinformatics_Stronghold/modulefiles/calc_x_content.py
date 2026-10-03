@@ -14,5 +14,5 @@ def calc_x_content(seq: str, x: Iterable[str]) -> float:
 
 
 # Simple Test
-test = "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGAC"
-print(calc_x_content(test, ('G','C')))
+# test = "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGAC"
+# print(calc_x_content(test, ('G','C')))
