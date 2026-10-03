@@ -1,9 +1,13 @@
+from Bio.Seq import reverse_complement
+
 with open("data/rosalind_revc.txt", "r") as f:
-    DNAseq = f.read().strip()
+    seq = f.read().strip()
 
-Comp_table = str.maketrans("GCAT", "CGTA")
+# test_raw = """
+# AAAACCCGGT
+# """
 
-rev_comp = DNAseq.translate(Comp_table)[::-1]
+rev_comp = reverse_complement(seq)
 
 print(rev_comp)
 
