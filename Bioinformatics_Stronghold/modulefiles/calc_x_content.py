@@ -2,6 +2,9 @@ from typing import Iterable
 
 # 어떤 서열의 원하는 문자들의 비율을 계산하는 함수
 def calc_x_content(seq: str, x: Iterable[str]) -> float:
+    """
+    어떤 서열의 원하는 문자들의 비율을 계산하는 함수
+    """
 
     # 예외
     if (not seq) or (not x):
