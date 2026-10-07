@@ -1,4 +1,5 @@
-from modulefiles import parse_uniprot_fasta, io_uniprot_fasta, find_pattern_location
+from Bioinformatics_Stronghold.modulefiles import find_pattern
+from modulefiles import parse_uniprot_fasta, io_uniprot_fasta
 
 
 with open("data/rosalind_mprt.txt", "r") as f:
@@ -33,7 +34,7 @@ for id, prot in prot_dict.items():
     id_idx = list(prot_dict.keys()).index(id)
     full_id = raw_ids[id_idx]
 
-    locat_dict[full_id] = list(map(lambda x: x + 1, find_pattern_location(motif_regex, prot, regex= True)))
+    locat_dict[full_id] = list(map(lambda x: x + 1, find_pattern(motif_regex, prot, regex= True)))
 
 for id in raw_ids:
     if id in locat_dict.keys():
