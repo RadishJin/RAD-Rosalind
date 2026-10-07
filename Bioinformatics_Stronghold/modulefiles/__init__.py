@@ -1,2 +1,1 @@
 from .parse_io_fasta import parse_rosalind_fasta, parse_uniprot_fasta
-from .find_pattern import find_pattern_location, find_pattern
